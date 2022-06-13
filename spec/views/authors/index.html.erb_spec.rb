@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe "authors/index", type: :view do
   before(:each) do
     assign(:authors, [
-      Author.create!(),
-      Author.create!()
+      Author.create!(name: 'John'),
+      Author.create!(name: 'John')
     ])
   end
 
