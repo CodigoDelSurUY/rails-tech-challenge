@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "authors/new", type: :view do
   before(:each) do
-    assign(:author, Author.new())
+    assign(:author, Author.new(name: 'John'))
   end
 
   it "renders new author form" do
