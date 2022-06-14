@@ -10,12 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_13_201043) do
+ActiveRecord::Schema.define(version: 2022_06_14_192212) do
 
   create_table "authors", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer "author_id", null: false
+    t.integer "post_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["author_id"], name: "index_favorites_on_author_id"
+    t.index ["post_id"], name: "index_favorites_on_post_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -27,5 +36,7 @@ ActiveRecord::Schema.define(version: 2022_06_13_201043) do
     t.index ["author_id"], name: "index_posts_on_author_id"
   end
 
+  add_foreign_key "favorites", "authors"
+  add_foreign_key "favorites", "posts"
   add_foreign_key "posts", "authors"
 end
