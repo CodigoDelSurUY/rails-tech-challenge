@@ -1,6 +1,15 @@
 <p id="notice"><%= notice %></p>
 
-<%= @author.name %>
+<h1><%= @author.name %></h1>
 
+<p># of faved posts: <%= @author.favorites.count %></p>
+
+<p> Last 5 favs: </p>
+<% @author.favorite_posts.from_someone_else.each do |favorite| %>
+  <a href=<%= post_path(favorite)%>><%= favorite.title %></a>
+<% end %>
+
+<p>
 <%= link_to 'Edit', edit_author_path(@author) %> |
 <%= link_to 'Back', authors_path %>
+</p>
