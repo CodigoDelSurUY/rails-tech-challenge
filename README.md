@@ -1,24 +1,11 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Welcome to CodigoDelSur Rails tech challenge
 
-Things you may want to cover:
+- To set up the app you will need Ruby 2.7.5 and Rails 6.1.5
 
-* Ruby version
+1. Run `bundle install`
+2. Run `rake db:create db:migrate db:seed`
+3. Run `rails server`
+4. In your browser you should be able to access the app using http://localhost:3000
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
