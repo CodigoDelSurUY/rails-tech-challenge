@@ -1,12 +1,22 @@
 <p id="notice"><%= notice %></p>
 
-<h1><%= @author.name %></h1>
+<h1>Name: <%= @author.name %></h1>
 
-<p># of faved posts: <%= @author.favorites.count %></p>
+<p>Number of faved posts: <%= @author.favorites.count %></p>
 
-<p> Last 5 favs: </p>
+<% if @author.favorite_posts.from_someone_else.any? %>
+<h2>Last 5 favorite post made by other authors</h2>
+<% end %>
 <% @author.favorite_posts.from_someone_else.each do |favorite| %>
   <a href=<%= post_path(favorite)%>><%= favorite.title %></a>
+<% end %>
+
+
+<h2>My Favorites by author</h2>
+
+
+<% Favorite.joins(:post).where('posts.author_id = ?', @author.id).group(:author_id).count.each do |author_id, count| %>
+  <p> <%= Author.find(author_id).name %> , <%= count %> posts</p>
 <% end %>
 
 <p>
